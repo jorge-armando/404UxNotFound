@@ -19,7 +19,7 @@ function cursedCursor() {
       position: fixed;
       width: 17px;
       height: 17px;
-      background: url('${chrome.runtime.getURL('arrow.png')}') no-repeat center/contain;
+      background: url('${chrome.runtime.getURL('img/arrow.png')}') no-repeat center/contain;
       pointer-events: none;
       z-index: 999999999;
       top: 0;

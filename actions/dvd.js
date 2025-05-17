@@ -3,7 +3,7 @@ function dvd(total = 30) {
   const positions = [];
   const velocities = [];
 
-  const cursorURL = chrome.runtime.getURL('dvd.png');
+  const cursorURL = chrome.runtime.getURL('img/dvd.png');
 
   const style = document.createElement('style');
   style.textContent = `
