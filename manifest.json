@@ -1,23 +1,23 @@
 {
-    "manifest_version": 3,
-    "name": "Custom Script Injector",
-    "version": "1.0",
-    "description": "Inject custom scripts into all websites.",
-    "permissions": ["scripting", "storage", "tabs"],
-    "host_permissions": ["<all_urls>"],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_title": "Custom Script Injector",
-      "default_popup": "options.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"],
-        "run_at": "document_idle"
-      }
-    ],
-    "options_page": "options.html"
-  }
+  "manifest_version": 3,
+  "name": "Custom Script Injector",
+  "version": "1.0",
+  "description": "Inject custom scripts into all websites.",
+  "permissions": ["scripting", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Custom Script Injector",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["actions/index.js", "actions/shuffleWords.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html"
+}
