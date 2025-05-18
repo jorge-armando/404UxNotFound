@@ -36,16 +36,19 @@ async function startMicVolumeDetection() {
       if (volume >= 20) {
         console.log("eee");
         document.querySelector(".screen-blocker").style.opacity = 0;
+        document.querySelector(".screen-blocker").style.visibility = "hidden";
         setTimeout(() => {
           getVolume();
         }, 5000);
       } else if (volume >= 4 && volume < 20) {
         document.querySelector(".screen-blocker").style.opacity = parsedVolume;
+        document.querySelector(".screen-blocker").style.visibility = "visible";
         setTimeout(() => {
           getVolume();
         }, 50);
       } else {
         document.querySelector(".screen-blocker").style.opacity = 1;
+        document.querySelector(".screen-blocker").style.visibility = "visible";
         setTimeout(() => {
           getVolume();
         }, 50);
@@ -72,7 +75,6 @@ function screenBlocker() {
   screenBlocker.style.width = "100%";
   screenBlocker.style.height = "100%";
   screenBlocker.style.transition = "0.1s";
-  screenBlocker.style.userSelect = "none";
   screenBlocker.style.display = "flex";
   screenBlocker.style.justifyContent = "center";
   screenBlocker.style.alignItems = "center";
