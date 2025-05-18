@@ -13,12 +13,10 @@ function shuffleWord(word) {
   return prefix + middle.join("") + suffix;
 }
 
-function shuffleText(text) {
-  return text.replace(/\b\w{6,}\b/g, (match) => shuffleWord(match));
-}
-
-app.addAction("shuffleWords", () => {
+function shuffleText() {
   document.querySelectorAll("p").forEach((el) => {
-    el.textContent = shuffleText(el.textContent);
+    el.textContent = el.textContent.replace(/\b\w{6,}\b/g, (match) =>
+      shuffleWord(match)
+    );
   });
-});
+}
