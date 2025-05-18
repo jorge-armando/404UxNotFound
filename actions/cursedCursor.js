@@ -1,3 +1,29 @@
+/**
+ * cursedCursor
+ * 
+ * Cria um cursor customizado que substitui o cursor padrão do navegador e se comporta de formas estranhas e imprevisíveis.
+ * 
+ * Funcionalidades:
+ * - Esconde o cursor padrão e mostra um cursor personalizado (seta).
+ * - O cursor personalizado reage ao movimento do mouse com diferentes modos, que mudam a cada 3 segundos.
+ * 
+ * Modos disponíveis:
+ * - normal: cursor segue o mouse normalmente.
+ * - slow: cursor se move lentamente (20% da velocidade).
+ * - fast: cursor se move rápido (200% da velocidade).
+ * - reverse: cursor se move na direção oposta ao mouse.
+ * - teleport: cursor pula para uma posição aleatória da tela.
+ * - stuck: cursor não se move.
+ * - shake: cursor se move com tremores aleatórios.
+ * - circle: cursor se move em círculo.
+ * - invisible: cursor fica invisível.
+ * 
+ * Implementação:
+ * - Cria um elemento div para o cursor personalizado.
+ * - Aplica estilos para esconder o cursor padrão e estilizar o cursor customizado.
+ * - Escuta o evento mousemove para controlar o cursor customizado.
+ * - Alterna os modos automaticamente a cada 3 segundos.
+ */
 function cursedCursor() {
   let mode = 'normal';
   let visible = true;
@@ -68,7 +94,7 @@ function cursedCursor() {
         dx = Math.cos(angle) * 30;
         dy = Math.sin(angle) * 30;
         break;
-      // normal or any unknown mode
+      // normal ou qualquer modo desconhecido: cursor segue normalmente
     }
 
     posX += dx;
@@ -93,7 +119,7 @@ function cursedCursor() {
       visible = true;
     }
 
-    setTimeout(changeMode, 3000); // troca a cada 3 segundos
+    setTimeout(changeMode, 3000); // muda modo a cada 3 segundos
   }
 
   changeMode();

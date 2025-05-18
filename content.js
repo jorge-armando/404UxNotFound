@@ -17,7 +17,7 @@ const evilFunctions = [
   () => swapImages(memes),
   () => swapTypedKeysRandomly(),
   () => screenBlocker(),
-  () => shuffleText(),
+  () => shuffleText()
 ];
 
 // Funções que já foram ativadas
@@ -29,12 +29,10 @@ function activateRandomEvilFunction() {
   if (remaining.length === 0) return;
 
   const randomIndex = Math.floor(Math.random() * remaining.length);
-  const realIndex = evilFunctions.findIndex(
-    (f) => f === remaining[randomIndex]
-  );
+  const realIndex = evilFunctions.findIndex(f => f === remaining[randomIndex]);
 
-  remaining[randomIndex](); // Ativa a função
-  activated.add(realIndex); // Marca como ativada
+  remaining[randomIndex]();         // Ativa a função
+  activated.add(realIndex);         // Marca como ativada
 }
 
 // Ativa uma função aleatória imediatamente

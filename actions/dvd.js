@@ -96,5 +96,3 @@ function dvd(total = 30) {
 
   animate();
 }
-
-window.multiFakeCursor = multiFakeCursor;

@@ -1,3 +1,9 @@
+// swapTypedKeysRandomly()
+// Substitui algumas teclas digitadas por outras de forma aleatória (30% de chance).
+// Afeta apenas campos de texto (input, textarea e contentEditable).
+// Mapeamento: letras de 'a' a 'l' são trocadas em sequência (ex: 'a' vira 's', 'l' vira 'a').
+// Ignora teclas modificadoras e comandos (Ctrl, Alt, etc.).
+
 function swapTypedKeysRandomly() {
   const chance = 0.3; // chance fixa de 30% dentro da função
   const keyMap = {

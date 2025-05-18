@@ -1,17 +1,27 @@
+// spawnFakeAd()
+// Cria um anúncio falso visualmente irritante e chamativo na tela.
+// O anúncio pode piscar, se mover e até redirecionar o usuário para sites aleatórios.
+// - 50% de chance de se mover automaticamente.
+// - 50% de chance de redirecionar ao ser clicado.
+// - Botão de fechar pode fugir do cursor ou funcionar normalmente.
+
+
+// startHellAds(interval)
+// Inicia a geração contínua de anúncios falsos.
+// Parâmetros:
+// - interval (opcional): tempo em milissegundos entre anúncios (padrão: 10000ms).
+// Usa spawnFakeAd() internamente a cada intervalo definido.
+
 function spawnFakeAd() {
   const ad = document.createElement('div');
   const isAnnoying = Math.random() < 0.5;
   const shouldRedirect = Math.random() < 0.5;
 
   const redirectUrls = [
-    'https://www.pointerpointer.com/',             // dedo apontando
     'https://www.koalastothemax.com/',              // arte gerada com círculos
     'https://www.zoomquilt.org/',                    // zoom infinito
-    'https://www.partridgegetslucky.com/',           // paródia do Daft Punk
-    'https://www.staggeringbeauty.com/',             // coisa maluca que sacode
     'https://cat-bounce.com/',                        // gatos pulando na tela
     'https://www.omfgdogs.com/',                      // cachorrinhos dançantes
-    'https://www.sanger.dk/',                         // coisa esquisita dinamarquesa
     'https://hasthelargehadroncolliderdestroyedtheworldyet.com/', // pergunta boba
     'https://thatsthefinger.com/'                     // dedo médio
   ];
