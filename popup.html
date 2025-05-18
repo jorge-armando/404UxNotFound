@@ -23,15 +23,46 @@
       color: #eee;
     }
 
-    button {
-      background-color: #4CAF50;
+    #buttonGrid {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 30%;
+    }
+
+    .column button {
+      background-color: #444;
       color: white;
       border: none;
-      padding: 10px 15px;
+      padding: 8px;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
+    }
+
+    .column button:hover {
+      background-color: #666;
+    }
+
+    #apocalypseBtn {
+      background-color: #C62828;
       width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #apocalypseBtn:hover {
+      background-color: #B71C1C;
     }
 
     button:hover {
@@ -41,6 +72,16 @@
 </head>
 <body>
   <h1>404 UX Not Found</h1>
-  <h5>A extenção está temporariamente disponível</h5>
+  <h5>A extensão está temporariamente disponível</h5>
+
+  <div id="buttonGrid">
+    <div class="column" id="col1"></div>
+    <div class="column" id="col2"></div>
+    <div class="column" id="col3"></div>
+  </div>
+
+  <button id="apocalypseBtn">Modo Apocalipse</button>
+
+  <script src="popup.js"></script>
 </body>
 </html>

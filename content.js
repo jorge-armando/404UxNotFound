@@ -5,11 +5,11 @@ const evilFunctions = [
   () => cursedCursor(),
   () => decreaseFont(),
   () => disableScroll(),
-  () => dvd(),
+  () => multiCursors(100),
   () => enableInvertedScroll(),
   () => evasiveButtons(),
   () => flipScreen(),
-  () => multiCursors(100),
+  () => dvd(),
   () => randomizeLinksOnClick(),
   () => showFakeNotRespondingAlert(10000),
   () => simulateInfiniteFormLoading(),
@@ -46,3 +46,25 @@ const interval = setInterval(() => {
   }
   activateRandomEvilFunction();
 }, 60000); // 60000ms = 1 minuto
+
+function activateAllEvilFunctions() {
+  evilFunctions.forEach((f, i) => {
+    if (!activated.has(i)) {
+      f();
+      activated.add(i);
+    }
+  });
+}
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'activateAll') {
+    activateAllEvilFunctions();
+  } else if (request.action === 'activateByIndex') {
+    const i = request.index;
+    if (!activated.has(i) && evilFunctions[i]) {
+      evilFunctions[i]();
+      activated.add(i);
+    }
+  }
+});
+
