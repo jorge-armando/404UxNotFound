@@ -1,3 +1,13 @@
+function getOpacityInfo(input) {
+  if (input < 0 || input > 16) {
+    return "Erro: o valor deve estar entre 0 e 16.";
+  }
+
+  const opacity = parseFloat(((16 - input) / 16).toFixed(2));
+
+  return opacity;
+}
+
 async function startMicVolumeDetection() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -21,15 +31,25 @@ async function startMicVolumeDetection() {
       }
       const rms = Math.sqrt(sum / bufferLength);
       const volume = Math.min(100, Math.round((rms / 128) * 100));
+      let parsedVolume = 1 - (volume * 5) / 100;
 
-      document.querySelector(".screen-blocker").style.opacity =
-        1 - (volume * 6) / 100;
-
-      console.log("Volume:", 1 - (volume * 6) / 100);
-
-      setTimeout(() => {
-        getVolume();
-      }, 200);
+      if (volume >= 20) {
+        console.log("eee");
+        document.querySelector(".screen-blocker").style.opacity = 0;
+        setTimeout(() => {
+          getVolume();
+        }, 5000);
+      } else if (volume >= 4 && volume < 20) {
+        document.querySelector(".screen-blocker").style.opacity = parsedVolume;
+        setTimeout(() => {
+          getVolume();
+        }, 50);
+      } else {
+        document.querySelector(".screen-blocker").style.opacity = 1;
+        setTimeout(() => {
+          getVolume();
+        }, 50);
+      }
     }
 
     getVolume();
@@ -40,10 +60,9 @@ async function startMicVolumeDetection() {
   }
 }
 
-app.addAction("sceenBlockerVolume", () => {
+function screenBlocker() {
   const screenBlocker = document.createElement("div");
   screenBlocker.className = "screen-blocker";
-  screenBlocker.style.display = "block";
   screenBlocker.style.position = "fixed";
   screenBlocker.style.top = "0";
   screenBlocker.style.left = "0";
@@ -54,8 +73,19 @@ app.addAction("sceenBlockerVolume", () => {
   screenBlocker.style.height = "100%";
   screenBlocker.style.transition = "0.1s";
   screenBlocker.style.userSelect = "none";
+  screenBlocker.style.display = "flex";
+  screenBlocker.style.justifyContent = "center";
+  screenBlocker.style.alignItems = "center";
+
+  const message = document.createElement("p");
+  message.textContent = "Grite para ver o website";
+  message.style.fontSize = "40px";
+  message.style.fontFamily = "Arial, sans-serif";
+  message.style.fontWeight = "bold";
+  message.style.color = "#ffffff";
+
+  screenBlocker.appendChild(message);
 
   document.body.appendChild(screenBlocker);
-  console.log("ddd");
   startMicVolumeDetection();
-});
+}
