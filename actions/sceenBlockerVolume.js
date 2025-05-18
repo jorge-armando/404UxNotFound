@@ -34,7 +34,6 @@ async function startMicVolumeDetection() {
       let parsedVolume = 1 - (volume * 5) / 100;
 
       if (volume >= 20) {
-        console.log("eee");
         document.querySelector(".screen-blocker").style.opacity = 0;
         document.querySelector(".screen-blocker").style.visibility = "hidden";
         setTimeout(() => {
