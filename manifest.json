@@ -1,23 +1,52 @@
 {
   "manifest_version": 3,
-  "name": "Custom Script Injector",
+  "name": "404 UX Not Found",
   "version": "1.0",
-  "description": "Inject custom scripts into all websites.",
-  "permissions": ["scripting", "storage", "tabs"],
+  "description": "A extenção está temporariamente disponível",
+  "permissions": ["scripting", "storage", "tabs", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
+  "icons": {
+    "16": "img/icon.png",
+    "32": "img/icon.png",
+    "48": "img/icon.png",
+    "128": "img/icon.png"
+  },
   "action": {
-    "default_title": "Custom Script Injector",
-    "default_popup": "options.html"
+    "default_title": "Painel do Caos",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["actions/index.js", "actions/shuffleWords.js", "content.js"],
+      "js": ["actions/autoScroll.js",
+        "actions/blurScreen.js",
+        "actions/cursedCursor.js",
+        "actions/decreaseFont.js",
+        "actions/disableScroll.js",
+        "actions/dvd.js",
+        "actions/enableInvertedScroll.js",
+        "actions/evasiveButtons.js",
+        "actions/flipScreen.js",
+        "actions/multiCursors.js",
+        "actions/randomizeLinksOnClick.js",
+        "actions/respondingAlert.js",
+        "actions/sceenBlockerVolume.js",
+        "actions/shuffleWords.js",
+        "actions/simulateInfiniteFormLoading.js",
+        "actions/spawnFakeAd.js",
+        "actions/swapImages.js",
+        "actions/swapTypedKeys.js",
+        "content.js"],
       "run_at": "document_idle"
     }
   ],
-  "options_page": "options.html"
+  "web_accessible_resources": [
+    {
+      "resources": ["img/dvd.png", "img/arrow.png", "img/icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
